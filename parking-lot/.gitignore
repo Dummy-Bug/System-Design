@@ -1,0 +1,55 @@
+# Build output
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+*.class
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# OS junk files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Environment and credentials
+*.env
+*.properties.local
+*.yml.local
+
+# Generated files
+out/
+bin/
+
+# IntelliJ project metadata
+*.xml~
+.idea_modules/
+
+# Maven wrapper backup
+mvnw.cmd
+mvnw
+
+# Node/npm cache if frontend integrated
+node_modules/
+dist/
+
+# JetBrains cache
+/.idea/**/workspace.xml
+/.idea/**/tasks.xml
+/.idea/**/dictionaries
+/.idea/**/libraries
+
+# Test coverage
+/coverage/
+*.lcov
