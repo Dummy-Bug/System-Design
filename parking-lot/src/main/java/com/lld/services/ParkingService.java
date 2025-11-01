@@ -19,7 +19,7 @@ public class ParkingService {
     Map<String, Vehicle> slotVehicleMap;
     Map<String, ParkingSlot> registrationNumberToSlotMap;
     Map<String, String> colorToRegistrationNumberMap;
-    Map<Vehicle, Ticket> vehicleTicketMap;
+    Map<String, Ticket> vehicleTicketMap;
 
     ParkingService(Parking parking, SlotFindingStrategy slotFindingStrategy) {
         this.parking = parking;
@@ -39,11 +39,6 @@ public class ParkingService {
             this.slotVehicleMap.put(slot.getSlotId(), vehicle);
             this.registrationNumberToSlotMap.put(vehicle.getRegistrationNumber(), slot);
             this.colorToRegistrationNumberMap.put(vehicle.getColor(), vehicle.getRegistrationNumber());
-            if (slot.park()) {
-                System.out.println("Parked Successfully");
-            } else {
-                System.out.println("Parking is FULL");
-            }
         } else {
             throw new RuntimeException("Parking is full");
         }
@@ -53,7 +48,7 @@ public class ParkingService {
                 .priceCalculationStrategy(PriceCalculationFactory.getPriceCalculationStrategyInstance(vehicle.getType()))
                 .slot(slotOptional.get())
                 .build();
-        vehicleTicketMap.put(vehicle, ticket);
+        vehicleTicketMap.put(vehicle.getRegistrationNumber(), ticket);
         return true;
     }
 
@@ -61,13 +56,12 @@ public class ParkingService {
 
         ParkingSlot slot = registrationNumberToSlotMap.get(vehicle.getRegistrationNumber());
         if (slot == null) {
-            System.out.println("Vehicle not found in parking lot");
+            System.out.println("Vehicle not found inside the parking lot");
             return;
         }
         slot.setStatus(SlotStatus.AVAILABLE);
         registrationNumberToSlotMap.remove(vehicle.getRegistrationNumber());
 
-        // Pay before leaving
         Ticket ticket = vehicleTicketMap.get(vehicle.getRegistrationNumber());
         ticket.setVehicleExitTime(Instant.now());
         ticket.calculateAndPay();
