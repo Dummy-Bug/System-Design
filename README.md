@@ -1,4 +1,4 @@
-## Parking Lot Low Level Design
+## 🚗 Parking Lot Low Level Design
 
 You are required to design an automated parking lot system that can support both **cars** and **bikes**.  
 The system should efficiently allocate, release, and track parking slots, while supporting **ticketing** and **payment** functionalities.
