@@ -1,5 +1,4 @@
-
-## Parking Lot Low LeveL Design 
+## Parking Lot Low Level Design
 
 You are required to design an automated parking lot system that can support both **cars** and **bikes**.  
 The system should efficiently allocate, release, and track parking slots, while supporting **ticketing** and **payment** functionalities.
@@ -19,7 +18,9 @@ The system should efficiently allocate, release, and track parking slots, while 
    - Cars  
    - Bikes  
    - Electric vehicles (cars or bikes)  
-7. On exit, users should be able to **pay via cash, card, or Fastag**.
+7. On exit, users should be able to **pay via cash, card, or Fastag**.  
+8. The system should **support multiple floors**, where each floor has its own set of slots for cars and bikes.  
+9. The system should **support hourly pricing**, configurable separately for each vehicle type (e.g., car, bike, electric vehicle).
 
 ---
 
@@ -40,4 +41,5 @@ The system should efficiently allocate, release, and track parking slots, while 
 - What data structures will you use for nearest-slot allocation?  
 - How will you ensure scalability if multiple parking lots exist?  
 - How would you handle payment failures or system crashes during payment?  
-- Can multiple entrances or exits be supported in your design?
+- Can multiple entrances or exits be supported in your design?  
+- How would pricing rules be configured and updated dynamically?
