@@ -1,5 +1,5 @@
 
-## Parking Lot System Design Problem
+## Parking Lot System Design 
 
 ### Context
 You are required to design an automated parking lot system that can support both **cars** and **bikes**.  
