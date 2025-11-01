@@ -21,4 +21,7 @@ public class Ticket {
     ParkingSlot slot;
     Vehicle vehicle;
     PriceCalculationStrategy priceCalculationStrategy;
+    public void calculateAndPay(){
+
+    }
 }

@@ -12,6 +12,4 @@ public abstract class ParkingSlot {
     List<VehicleType> supportedVehicles;
     SlotStatus status;
     Vehicle parkedVehicle;
-
-    public abstract boolean park();
 }
