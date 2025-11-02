@@ -44,7 +44,7 @@ public class ParkingService {
         }
         Ticket ticket = Ticket.builder()
                 .ticketId("1")
-                .vehicleEntryTime(Instant.now())
+                .vehicleEntryTime(Instant.now().minusSeconds(120))
                 .priceCalculationStrategy(PriceCalculationFactory.getPriceCalculationStrategyInstance(vehicle.getType()))
                 .slot(slotOptional.get())
                 .build();

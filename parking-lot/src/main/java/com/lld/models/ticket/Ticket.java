@@ -2,6 +2,7 @@ package com.lld.models.ticket;
 
 import com.lld.models.slot.ParkingSlot;
 import com.lld.models.vehicle.Vehicle;
+import com.lld.services.PricingService;
 import com.lld.strategies.price.PriceCalculationStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +22,11 @@ public class Ticket {
     ParkingSlot slot;
     Vehicle vehicle;
     PriceCalculationStrategy priceCalculationStrategy;
-    public void calculateAndPay(){
+    PricingService pricingService;
 
+    public void calculateAndPay() {
+        double finalPrice = this.pricingService.calculateFinalPrice(this);
+        System.out.printf("total amount is %s", finalPrice);
+        // simulate the pay and all which should be trivial
     }
 }
