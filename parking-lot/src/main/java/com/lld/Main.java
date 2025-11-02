@@ -48,18 +48,12 @@ public class Main {
         System.out.println("Parking bike...");
         parkingService.park(bike);
 
-        // Step 7: Wait or simulate some parking duration
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-
-        // Step 8: Leave parking and calculate charges
-        System.out.println("/n /n Car leaving...");
         parkingService.leaveParking(car);
-
-        System.out.println("Bike leaving...");
         parkingService.leaveParking(bike);
     }
 }
