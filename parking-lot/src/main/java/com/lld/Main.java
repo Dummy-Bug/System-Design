@@ -53,6 +53,7 @@ public class Main {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+        // step 7. leave parking
         parkingService.leaveParking(car);
         parkingService.leaveParking(bike);
     }
