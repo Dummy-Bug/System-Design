@@ -1,4 +1,4 @@
-package com.lld.decorator;
+package com.lld.decorators;
 
 public interface PriceComponent {
     double getPrice();

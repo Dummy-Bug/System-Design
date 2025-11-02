@@ -6,6 +6,7 @@ import com.lld.models.slot.ParkingSlot;
 import com.lld.models.slot.SlotStatus;
 import com.lld.models.ticket.Ticket;
 import com.lld.models.vehicle.Vehicle;
+import com.lld.models.vehicle.VehicleType;
 import com.lld.strategies.slot.SlotFindingStrategy;
 
 import java.time.Instant;
@@ -14,23 +15,25 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ParkingService {
-    Parking parking;
-    SlotFindingStrategy slotFindingStrategy;
-    Map<String, Vehicle> slotVehicleMap;
-    Map<String, ParkingSlot> registrationNumberToSlotMap;
-    Map<String, String> colorToRegistrationNumberMap;
-    Map<String, Ticket> vehicleTicketMap;
+    public Parking parking;
+    public SlotFindingStrategy slotFindingStrategy;
+    public Map<String, Vehicle> slotVehicleMap;
+    public Map<String, ParkingSlot> registrationNumberToSlotMap;
+    public Map<String, String> colorToRegistrationNumberMap;
+    public Map<String, Ticket> vehicleTicketMap;
+    public PricingService pricingService;
 
-    ParkingService(Parking parking, SlotFindingStrategy slotFindingStrategy) {
+    public ParkingService(Parking parking, SlotFindingStrategy slotFindingStrategy) {
         this.parking = parking;
         this.slotFindingStrategy = slotFindingStrategy;
         this.slotVehicleMap = new HashMap<>();
         this.registrationNumberToSlotMap = new HashMap<>();
         this.colorToRegistrationNumberMap = new HashMap<>();
         this.vehicleTicketMap = new HashMap<>();
+        this.pricingService = new PricingService();
     }
 
-    public boolean park(Vehicle vehicle) {
+    public void park(Vehicle vehicle) {
         Optional<ParkingSlot> slotOptional = slotFindingStrategy.findSlot(parking, vehicle);
         if (slotOptional.isPresent()) {
             ParkingSlot slot = slotOptional.get();
@@ -39,6 +42,7 @@ public class ParkingService {
             this.slotVehicleMap.put(slot.getSlotId(), vehicle);
             this.registrationNumberToSlotMap.put(vehicle.getRegistrationNumber(), slot);
             this.colorToRegistrationNumberMap.put(vehicle.getColor(), vehicle.getRegistrationNumber());
+            System.out.println(vehicle.getType() + " has been parked in " + slot.getSlotId());
         } else {
             throw new RuntimeException("Parking is full");
         }
@@ -49,7 +53,6 @@ public class ParkingService {
                 .slot(slotOptional.get())
                 .build();
         vehicleTicketMap.put(vehicle.getRegistrationNumber(), ticket);
-        return true;
     }
 
     public void leaveParking(Vehicle vehicle) {
@@ -64,8 +67,9 @@ public class ParkingService {
 
         Ticket ticket = vehicleTicketMap.get(vehicle.getRegistrationNumber());
         ticket.setVehicleExitTime(Instant.now());
+        ticket.setPricingService(pricingService);
         ticket.calculateAndPay();
 
-        System.out.println("Vehicle left parking lot");
+        System.out.printf("\n %s left parking lot \n",vehicle.getType());
     }
 }

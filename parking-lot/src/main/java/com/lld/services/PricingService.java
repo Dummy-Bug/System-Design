@@ -1,9 +1,9 @@
 package com.lld.services;
 
-import com.lld.decorator.BasePrice;
-import com.lld.decorator.DiscountDecorator;
-import com.lld.decorator.PriceComponent;
-import com.lld.decorator.TaxDecorator;
+import com.lld.decorators.BasePrice;
+import com.lld.decorators.DiscountDecorator;
+import com.lld.decorators.PriceComponent;
+import com.lld.decorators.TaxDecorator;
 import com.lld.models.ticket.Ticket;
 import com.lld.strategies.price.PriceCalculationStrategy;
 
@@ -16,7 +16,9 @@ public class PricingService {
 
     public double calculateFinalPrice(Ticket ticket) {
         PriceCalculationStrategy strategy = ticket.getPriceCalculationStrategy();
-        double basePrice = strategy.calculatePrice(Duration.between(ticket.getVehicleExitTime(),ticket.getVehicleEntryTime()).getSeconds());
+        double basePrice = strategy.calculatePrice(Duration.between(
+                ticket.getVehicleEntryTime(),
+                ticket.getVehicleExitTime()).getSeconds());
 
         PriceComponent component = new BasePrice(basePrice);
         component = new TaxDecorator(component, TAX_PERCENTAGE);
