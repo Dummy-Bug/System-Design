@@ -5,6 +5,10 @@ The system should efficiently allocate, release, and track parking slots, while 
 
 ---
 
+### [Requirement Doc](https://github.com/singhsanket143/Parking-lot-problem-LLD/blob/master/requirements/Parkinglot.pdf)
+### [Problem Statement](https://github.com/singhsanket143/Parking-lot-problem-LLD/blob/master/requirements/gojekproblemstatment.pdf)
+
+
 ### Requirements
 
 1. The parking lot should have a **unique number assigned to each slot**, starting from the nearest slot to the entry point.  
@@ -21,7 +25,6 @@ The system should efficiently allocate, release, and track parking slots, while 
 7. On exit, users should be able to **pay via cash, card, or Fastag**.  
 8. The system should **support multiple floors**, where each floor has its own set of slots for cars and bikes.  
 9. The system should **support hourly pricing**, configurable separately for each vehicle type (e.g., car, bike, electric vehicle).
-
 ---
 
 ### Functional Requirements
