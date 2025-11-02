@@ -35,7 +35,7 @@ The system should efficiently allocate, release, and track parking slots, while 
 
 ---
 
-### Follow-Up Questions (Interviewer may ask)
+### Follow-Up Questions
 
 - How will you model the system using classes and relationships?  
 - What data structures will you use for nearest-slot allocation?  
