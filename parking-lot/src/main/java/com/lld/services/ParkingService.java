@@ -6,7 +6,6 @@ import com.lld.models.slot.ParkingSlot;
 import com.lld.models.slot.SlotStatus;
 import com.lld.models.ticket.Ticket;
 import com.lld.models.vehicle.Vehicle;
-import com.lld.models.vehicle.VehicleType;
 import com.lld.strategies.slot.SlotFindingStrategy;
 
 import java.time.Instant;
