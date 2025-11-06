@@ -11,7 +11,7 @@ public interface BookingService {
 
     boolean lockSeats(long showId, List<Long> seatIds, Long userId);
 
-    Optional<Ticket> bookTicket(long showId, List<Long> seatIds, long userId);
+    Optional<Ticket> bookTicket(long showId, List<Long> showSeatIds, long userId);
 
     void clearAllSeatLocks();
 }
