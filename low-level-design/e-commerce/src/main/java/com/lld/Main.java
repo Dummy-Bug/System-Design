@@ -1,8 +1,6 @@
 package com.lld;
 
-import com.lld.criteria.BrandFilterCriteria;
-import com.lld.criteria.Criteria;
-import com.lld.criteria.PriceFilterCriteria;
+import com.lld.criteria.*;
 import com.lld.factories.PriceComparisonStrategyFactory;
 import com.lld.models.Brand;
 import com.lld.models.Category;
@@ -28,10 +26,12 @@ public class Main {
         Criteria cr1 = new BrandFilterCriteria("Apple");
         Criteria cr2 = new BrandFilterCriteria("Samsung");
 
-        Criteria priceFilterCriteria = new PriceFilterCriteria(999, PriceComparisonStrategyFactory.create(Operator.LESS_THAN));
-//        List<Product> priceFilteredProducts = priceFilterCriteria.satisfy(products);
-//        for (Product p : priceFilteredProducts) {
-//            IO.println(p.getName());
-//        }
+        Criteria priceFilterCriteria = new PriceFilterCriteria(999,
+                PriceComparisonStrategyFactory.create(Operator.LESS_THAN));
+        Criteria orCriteria = new OrFilterCriteria(List.of(cr1, cr2));
+        Criteria andCriteria = new AndFilterCriteria(List.of(orCriteria, priceFilterCriteria));
+        List<Product> filteredProducts = andCriteria.satisfy(products);
+
+        filteredProducts.forEach(product -> IO.println(product.getName()));
     }
 }
