@@ -29,9 +29,9 @@ public class Main {
         Criteria cr2 = new BrandFilterCriteria("Samsung");
 
         Criteria priceFilterCriteria = new PriceFilterCriteria(999, PriceComparisonStrategyFactory.create(Operator.LESS_THAN));
-        List<Product> priceFilteredProducts = priceFilterCriteria.satisfy(products);
-        for (Product p : priceFilteredProducts) {
-            IO.println(p.getName());
-        }
+//        List<Product> priceFilteredProducts = priceFilterCriteria.satisfy(products);
+//        for (Product p : priceFilteredProducts) {
+//            IO.println(p.getName());
+//        }
     }
 }

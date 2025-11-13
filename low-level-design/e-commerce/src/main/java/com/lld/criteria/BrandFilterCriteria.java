@@ -15,7 +15,8 @@ public class BrandFilterCriteria implements Criteria {
     @Override
     public List<Product> satisfy(List<Product> products) {
         return products.stream()
-                .filter(product -> product.getName().equals(brand))
+                .filter(
+                        product -> product.getBrand().getName().equalsIgnoreCase(brand))
                 .collect(Collectors.toList());
     }
 }
