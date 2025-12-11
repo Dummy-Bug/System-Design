@@ -7,6 +7,8 @@ public interface CacheService {
 
     void set(String key, Object value);
 
+    boolean setIfAbsent(String key, String value, long ttlSeconds);
+
     Object get(String key);
 
     void delete(String key);

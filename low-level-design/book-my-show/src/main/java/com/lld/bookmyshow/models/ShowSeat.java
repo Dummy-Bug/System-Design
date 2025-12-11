@@ -32,7 +32,7 @@ public class ShowSeat extends BaseModel {
     @JoinColumn(name = "ticket_id")
     Ticket ticket;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     ShowSeatStatus showSeatStatus;
 
 }

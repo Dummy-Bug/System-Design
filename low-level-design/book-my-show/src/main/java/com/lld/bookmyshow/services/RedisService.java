@@ -16,7 +16,17 @@ public class RedisService implements CacheService {
 
     @Override
     public void set(String key, Object value) {
-        stringRedisTemplate.opsForValue().set(key, value.toString(), 2, TimeUnit.MINUTES);
+        stringRedisTemplate.
+                opsForValue()
+                .set(key, value.toString(), 2, TimeUnit.MINUTES);
+    }
+
+    @Override
+    public boolean setIfAbsent(String key, String value, long ttlSeconds) {
+        Boolean result = stringRedisTemplate
+                .opsForValue()
+                .setIfAbsent(key, value, ttlSeconds, TimeUnit.SECONDS);
+        return Boolean.TRUE.equals(result);
     }
 
     @Override
